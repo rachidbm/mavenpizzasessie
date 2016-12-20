@@ -5,7 +5,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
-import org.springframework.context.annotation.PropertySource;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -15,7 +14,6 @@ import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
 @Configuration
 @ComponentScan(basePackages = "eu.luminis.kenteken")
 @ImportResource("classpath:applicationContext.xml")
-@PropertySource("classpath:enwire-services.properties")
 public class ApplicationContext {
 
 	@Bean
