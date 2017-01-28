@@ -1,0 +1,40 @@
+plugins {
+  id "com.bmuschko.tomcat" version "2.2.5"
+}
+
+apply plugin: 'war'
+
+description = """Web application kentekengegevens"""
+
+tomcat {
+    httpPort = 8090
+    contextPath = 'kentekengegevens'
+}
+
+
+dependencies {
+    compile group: 'org.springframework', name: 'spring-context', version:'4.3.2.RELEASE'
+    compile group: 'org.springframework', name: 'spring-web', version:'4.3.2.RELEASE'
+    compile group: 'org.apache.cxf', name: 'cxf-core', version:'3.1.7'
+    compile group: 'org.apache.cxf', name: 'cxf-rt-frontend-jaxrs', version:'3.1.7'
+    compile group: 'org.apache.cxf', name: 'cxf-rt-transports-http', version:'3.1.7'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version:'2.8.5'
+    compile group: 'com.fasterxml.jackson.jaxrs', name: 'jackson-jaxrs-json-provider', version:'2.8.5'
+    compile group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version:'2.8.5'
+    compile group: 'org.slf4j', name: 'slf4j-api', version:'1.7.5'
+    runtime project(':common')
+    runtime project(':kenteken-service-interface')
+    runtime project(':rdw-opendata')
+    runtime project(':rest-services')
+    providedCompile group: 'javax.servlet', name: 'javax.servlet-api', version:'3.0.1'
+}
+
+
+dependencies {
+    def tomcatVersion = '7.0.59'
+    tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
+           "org.apache.tomcat.embed:tomcat-embed-logging-juli:${tomcatVersion}",
+           "org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}"
+}
+
+
