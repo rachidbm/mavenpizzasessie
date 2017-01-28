@@ -1,5 +1,18 @@
 description = """RDW OpenData kentekenopvraagservice"""
 
+task zoekKenteken(type: JavaExec) {
+	// 90-PTV-7
+	classpath = sourceSets.main.runtimeClasspath
+	main = 'eu.luminis.kenteken.rdwopendata.Application'
+
+	if(project.hasProperty('kenteken')) {
+		args kenteken
+//	} else {
+//		throw new IllegalArgumentException("Geen kenteken opgegeven")
+	}
+}
+
+
 dependencies {
     compile project(':common')
     compile project(':kenteken-service-interface')
